@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
     alignItems: 'center',
   },
+
   pressableText: {
     color: COLORS.white,
   },

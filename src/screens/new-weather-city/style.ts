@@ -36,13 +36,8 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.grey,
   },
   pressableView: {
-    backgroundColor: '#FFBD57',
-    borderRadius: 24,
-    paddingVertical: 16,
-    paddingHorizontal: 8,
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-  },
-  pressableText: {
-    color: '#fff',
   },
 });

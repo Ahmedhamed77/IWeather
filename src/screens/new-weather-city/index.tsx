@@ -9,7 +9,7 @@ import {
   searchNewWeatherCity,
 } from '../../redux/search-city-weather/action';
 import {addNewWeatherCity} from '../../redux/city-weather/action';
-import {PressableScaleCard} from '../../shared';
+import {COLORS, PressableScaleCard} from '../../shared';
 import {SearchedCard} from './search-card';
 import {styles} from './style';
 
@@ -51,7 +51,9 @@ export const NewWeatherCity: React.FC<NewWeatherCityProps> = () => {
           onChangeText={setCityValue}
         />
         <PressableScaleCard onPress={onSearch}>
-          <Ionicons size={24} name={'search'} color="#000" />
+          <View style={styles.pressableView}>
+            <Ionicons size={24} name={'search'} color={COLORS.black} />
+          </View>
         </PressableScaleCard>
       </View>
       {searchedCity && (
