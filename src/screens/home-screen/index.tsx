@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View} from 'react-native';
+import {Text, View} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -32,12 +32,14 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMoscowWeather());
-    dispatch(getCairoWeather());
-    dispatch(getNewYorkWeather());
-    dispatch(getLondonWeather());
-    dispatch(getKrasnodarWeather());
-  }, [dispatch]);
+    if (cities.length === 0) {
+      dispatch(getMoscowWeather());
+      dispatch(getCairoWeather());
+      dispatch(getNewYorkWeather());
+      dispatch(getLondonWeather());
+      dispatch(getKrasnodarWeather());
+    }
+  }, [dispatch, cities.length]);
 
   const goToWeatherDetails = (item: GetCityWeatherResponse) =>
     navigation.navigate(AppParams.WeatherDetails, {item});
@@ -48,8 +50,16 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
     return <Loader color={COLORS.aqua} />;
   }
 
-  if (!cities || error) {
+  if (!cities) {
     return null;
+  }
+
+  if (error) {
+    return (
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>Something went wrong</Text>
+      </View>
+    );
   }
 
   return (

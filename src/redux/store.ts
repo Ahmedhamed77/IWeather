@@ -1,6 +1,8 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from './rootReducer';
+import {persistStore} from 'redux-persist';
+
+import {persistAppReducer} from './rootReducer';
 
 const middleWare = [thunk];
 
@@ -9,4 +11,9 @@ if (__DEV__) {
   middleWare.push(createDebugger());
 }
 
-export const store = createStore(rootReducer, applyMiddleware(...middleWare));
+export const store = createStore(
+  persistAppReducer,
+  applyMiddleware(...middleWare),
+);
+
+export const persistor = persistStore(store);

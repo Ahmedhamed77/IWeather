@@ -18,10 +18,10 @@ export const styles = StyleSheet.create({
     marginBottom: 16,
   },
   cityExist: {
-    backgroundColor: COLORS.grey,
+    backgroundColor: COLORS.lightGrey,
   },
   pressableView: {
-    backgroundColor: COLORS.lightGrey,
+    backgroundColor: COLORS.lightOrange,
     borderRadius: 24,
     paddingVertical: 16,
     paddingHorizontal: 8,

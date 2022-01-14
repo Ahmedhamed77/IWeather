@@ -37,6 +37,7 @@ export const cityReducer = (
     case ActionType.CITY_ERROR:
       return {
         ...state,
+        loading: false,
         error: action.payload,
       };
     default:

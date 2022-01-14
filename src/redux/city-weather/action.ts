@@ -17,7 +17,7 @@ export const getMoscowWeather = () => async (dispatch: Dispatch<Action>) => {
 
     dispatch({type: ActionType.GET_CITY, payload: moscowWeather});
   } catch (error: any) {
-    console.log(error, 'error fetching weather ');
+    dispatch({type: ActionType.CITY_ERROR, payload: error});
   }
 };
 
@@ -28,7 +28,7 @@ export const getCairoWeather = () => async (dispatch: Dispatch<Action>) => {
 
     dispatch({type: ActionType.GET_CITY, payload: cairoWeather});
   } catch (error: any) {
-    console.log(error, 'error fetching weather ');
+    dispatch({type: ActionType.CITY_ERROR, payload: error});
   }
 };
 
@@ -39,7 +39,7 @@ export const getNewYorkWeather = () => async (dispatch: Dispatch<Action>) => {
 
     dispatch({type: ActionType.GET_CITY, payload: newYorkWeather});
   } catch (error: any) {
-    console.log(error, 'error fetching weather ');
+    dispatch({type: ActionType.CITY_ERROR, payload: error});
   }
 };
 
@@ -50,7 +50,7 @@ export const getLondonWeather = () => async (dispatch: Dispatch<Action>) => {
 
     dispatch({type: ActionType.GET_CITY, payload: londonWeather});
   } catch (error: any) {
-    console.log(error, 'error fetching weather ');
+    dispatch({type: ActionType.CITY_ERROR, payload: error});
   }
 };
 
@@ -61,7 +61,7 @@ export const getKrasnodarWeather = () => async (dispatch: Dispatch<Action>) => {
 
     dispatch({type: ActionType.GET_CITY, payload: krasnodarWeather});
   } catch (error: any) {
-    console.log(error, 'error fetching weather ');
+    dispatch({type: ActionType.CITY_ERROR, payload: error});
   }
 };
 

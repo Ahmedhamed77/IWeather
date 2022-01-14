@@ -10,6 +10,15 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  errorText: {
+    fontSize: 24,
+    color: COLORS.violetRed,
+  },
   pressableStyle: {
     paddingHorizontal: 12,
     marginVertical: 12,

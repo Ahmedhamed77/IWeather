@@ -1,6 +1,6 @@
 import axiosPackage from 'axios';
 
-const APP_KEY = 'd7b00e3b1c8cc224e73f52f2cf64a792';
+const APP_KEY = '915d91ed8153af2f494be484c8effcbd';
 
 export const server = {
   todayWeather: `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${APP_KEY}`,
