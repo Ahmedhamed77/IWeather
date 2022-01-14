@@ -3,13 +3,19 @@ import axiosPackage from 'axios';
 const APP_KEY = 'd7b00e3b1c8cc224e73f52f2cf64a792';
 
 export const server = {
-  live: `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${APP_KEY}`,
+  todayWeather: `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${APP_KEY}`,
+  tomorrowWeather: `https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=${APP_KEY}`,
 };
 
-export const baseURL = server.live;
+export const baseURL = server.todayWeather;
+export const baseURLInstance = server.tomorrowWeather;
 
 export const axios = axiosPackage.create({
   baseURL,
+});
+
+export const axiosInstance = axiosPackage.create({
+  baseURL: baseURLInstance,
 });
 
 axios.interceptors.response.use(

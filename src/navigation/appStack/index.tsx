@@ -2,7 +2,12 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {AppParams, AppParamsList} from './interface';
-import {HomeScreen, WeatherDetailsScreen} from '../../screens';
+import {
+  HomeScreen,
+  NewWeatherCity,
+  NextDaysWeather,
+  WeatherDetailsScreen,
+} from '../../screens';
 
 const Stack = createNativeStackNavigator<AppParamsList>();
 
@@ -13,6 +18,14 @@ export const AppStack = () => {
       <Stack.Screen
         name={AppParams.WeatherDetails}
         component={WeatherDetailsScreen}
+      />
+      <Stack.Screen
+        name={AppParams.NextDaysWeather}
+        component={NextDaysWeather}
+      />
+      <Stack.Screen
+        name={AppParams.NewWeatherCity}
+        component={NewWeatherCity}
       />
     </Stack.Navigator>
   );

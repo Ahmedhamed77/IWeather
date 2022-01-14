@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from '../../shared';
 
 export const styles = StyleSheet.create({
   container: {
@@ -12,5 +13,18 @@ export const styles = StyleSheet.create({
   pressableStyle: {
     paddingHorizontal: 12,
     marginVertical: 12,
+  },
+  pressableIconContainer: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+  },
+  iconContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: COLORS.smoke,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

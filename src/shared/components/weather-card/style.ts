@@ -68,4 +68,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 4,
     paddingVertical: 2,
   },
+  dateContainer: {
+    alignSelf: 'center',
+    marginBottom: 12,
+  },
 });

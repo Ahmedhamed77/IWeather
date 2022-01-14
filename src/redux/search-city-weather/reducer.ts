@@ -1,42 +1,43 @@
 import {GetCityWeatherResponse} from '../../shared';
 import {Action, ActionType} from './types';
 
-interface CityReducer {
-  cities: GetCityWeatherResponse[];
+interface SearchWeatherReducer {
+  searchedCity: GetCityWeatherResponse | null;
   loading: boolean;
   error: string | null;
 }
 const initialState = {
-  cities: [],
+  searchedCity: null,
   loading: false,
   error: null,
 };
 
-export const cityReducer = (
-  state: CityReducer = initialState,
+export const searchWeatherReducer = (
+  state: SearchWeatherReducer = initialState,
   action: Action,
-): CityReducer => {
+): SearchWeatherReducer => {
   switch (action.type) {
-    case ActionType.CITY_LOADING:
+    case ActionType.SEARCH_CITY_LOADING:
       return {
         ...state,
         loading: true,
       };
-    case ActionType.GET_CITY:
+    case ActionType.SEARCH_WEATHER_CITY:
       return {
-        cities: [...state.cities, action.payload],
+        searchedCity: action.payload,
         loading: false,
         error: null,
       };
-    case ActionType.ADD_NEW_CITY:
+    case ActionType.RESET_SEARCH:
       return {
-        cities: [...state.cities, action.payload],
+        searchedCity: null,
         loading: false,
         error: null,
       };
-    case ActionType.CITY_ERROR:
+    case ActionType.SEARCH_CITY_ERROR:
       return {
         ...state,
+        loading: false,
         error: action.payload,
       };
     default:

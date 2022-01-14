@@ -1,13 +1,26 @@
 import React, {useEffect} from 'react';
-import {ActivityIndicator, ScrollView} from 'react-native';
+import {View} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {Store} from '../../redux';
-import {PressableScaleCard, WeatherCard} from '../../shared';
+import {
+  COLORS,
+  GetCityWeatherResponse,
+  Loader,
+  PressableScaleCard,
+} from '../../shared';
 import {AppParams, AppParamsList} from '../../navigation/appStack/interface';
-import {getWeatherOfCity} from '../../redux/city-weather/action';
 import {styles} from './style';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {
+  getCairoWeather,
+  getKrasnodarWeather,
+  getLondonWeather,
+  getMoscowWeather,
+  getNewYorkWeather,
+} from '../../redux/city-weather/action';
+import {HomeScreenView} from './view';
 
 interface HomeScreenProps {
   navigation: StackNavigationProp<AppParamsList, AppParams.Home>;
@@ -19,14 +32,20 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getWeatherOfCity());
+    dispatch(getMoscowWeather());
+    dispatch(getCairoWeather());
+    dispatch(getNewYorkWeather());
+    dispatch(getLondonWeather());
+    dispatch(getKrasnodarWeather());
   }, [dispatch]);
 
-  const goToWeatherDetails = () =>
-    navigation.navigate(AppParams.WeatherDetails);
+  const goToWeatherDetails = (item: GetCityWeatherResponse) =>
+    navigation.navigate(AppParams.WeatherDetails, {item});
+
+  const goToAddNewCity = () => navigation.navigate(AppParams.NewWeatherCity);
 
   if (loading) {
-    return <ActivityIndicator style={styles.loading} color={'blue'} />;
+    return <Loader color={COLORS.aqua} />;
   }
 
   if (!cities || error) {
@@ -34,23 +53,15 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   }
 
   return (
-    <ScrollView>
-      {cities.map(city => {
-        return (
-          <PressableScaleCard
-            key={city.id}
-            onPress={goToWeatherDetails}
-            style={styles.pressableStyle}>
-            <WeatherCard
-              name={city.name}
-              temp={Math.round(city.main.temp)}
-              condition={city.weather[0].main}
-              temp_min={Math.round(city.main.temp_min)}
-              temp_max={Math.round(city.main.temp_max)}
-            />
-          </PressableScaleCard>
-        );
-      })}
-    </ScrollView>
+    <>
+      <HomeScreenView cities={cities} onCityPress={goToWeatherDetails} />
+      <PressableScaleCard
+        style={styles.pressableIconContainer}
+        onPress={goToAddNewCity}>
+        <View style={styles.iconContainer}>
+          <Ionicons size={24} name={'add-outline'} color={COLORS.black} />
+        </View>
+      </PressableScaleCard>
+    </>
   );
 };

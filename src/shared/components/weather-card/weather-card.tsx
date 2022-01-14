@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleProp, Text, View, ViewStyle} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -12,6 +12,8 @@ interface WeatherCardProps {
   condition: string;
   temp_min: number;
   temp_max: number;
+  date?: string;
+  styleCard?: StyleProp<ViewStyle>;
 }
 
 export const WeatherCard: React.FC<WeatherCardProps> = ({
@@ -20,15 +22,21 @@ export const WeatherCard: React.FC<WeatherCardProps> = ({
   condition,
   temp_max,
   temp_min,
+  date,
+  styleCard,
 }) => {
   return (
     <LinearGradient
       colors={weatherOptions[condition]?.gradient || []}
-      style={styles.container}>
+      style={[styles.container, styleCard]}>
       <View style={styles.topContainer}>
         <Ionicons size={20} name={'map'} color="white" />
         <Text style={styles.locationText}>{name}</Text>
       </View>
+      <View style={styles.dateContainer}>
+        {date && <Text style={styles.locationText}>{date}</Text>}
+      </View>
+
       <View style={styles.halfContainer}>
         <Ionicons
           size={96}

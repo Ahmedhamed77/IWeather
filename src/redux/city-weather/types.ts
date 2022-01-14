@@ -2,13 +2,19 @@ import {GetCityWeatherResponse} from '../../shared';
 
 export enum ActionType {
   GET_CITY = 'GET_CITY',
+  ADD_NEW_CITY = 'ADD_NEW_CITY',
   CITY_LOADING = 'CITY_LOADING',
   CITY_ERROR = 'CITY_ERROR',
 }
 
 interface GetCity {
   type: ActionType.GET_CITY;
-  payload: GetCityWeatherResponse[];
+  payload: GetCityWeatherResponse;
+}
+
+interface AddNewWeatherCity {
+  type: ActionType.ADD_NEW_CITY;
+  payload: GetCityWeatherResponse;
 }
 
 interface CityLoading {
@@ -20,4 +26,4 @@ interface CityError {
   payload: string;
 }
 
-export type Action = GetCity | CityLoading | CityError;
+export type Action = GetCity | AddNewWeatherCity | CityLoading | CityError;

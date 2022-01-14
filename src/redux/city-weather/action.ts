@@ -2,6 +2,7 @@ import {Dispatch} from 'redux';
 
 import {
   getCairoCity,
+  GetCityWeatherResponse,
   getKrasnodarCity,
   getLondonCity,
   getMoscowCity,
@@ -9,25 +10,62 @@ import {
 } from '../../shared';
 import {Action, ActionType} from './types';
 
-export const getWeatherOfCity = () => async (dispatch: Dispatch<Action>) => {
+export const getMoscowWeather = () => async (dispatch: Dispatch<Action>) => {
   dispatch({type: ActionType.CITY_LOADING});
   try {
     const moscowWeather = await getMoscowCity();
-    const cairoWeather = await getCairoCity();
-    const newYorkWeather = await getNewYorkCity();
-    const londonWeather = await getLondonCity();
-    const krasnadorWeather = await getKrasnodarCity();
 
-    const data = [
-      moscowWeather,
-      cairoWeather,
-      newYorkWeather,
-      londonWeather,
-      krasnadorWeather,
-    ];
-
-    dispatch({type: ActionType.GET_CITY, payload: data});
+    dispatch({type: ActionType.GET_CITY, payload: moscowWeather});
   } catch (error: any) {
     console.log(error, 'error fetching weather ');
   }
 };
+
+export const getCairoWeather = () => async (dispatch: Dispatch<Action>) => {
+  dispatch({type: ActionType.CITY_LOADING});
+  try {
+    const cairoWeather = await getCairoCity();
+
+    dispatch({type: ActionType.GET_CITY, payload: cairoWeather});
+  } catch (error: any) {
+    console.log(error, 'error fetching weather ');
+  }
+};
+
+export const getNewYorkWeather = () => async (dispatch: Dispatch<Action>) => {
+  dispatch({type: ActionType.CITY_LOADING});
+  try {
+    const newYorkWeather = await getNewYorkCity();
+
+    dispatch({type: ActionType.GET_CITY, payload: newYorkWeather});
+  } catch (error: any) {
+    console.log(error, 'error fetching weather ');
+  }
+};
+
+export const getLondonWeather = () => async (dispatch: Dispatch<Action>) => {
+  dispatch({type: ActionType.CITY_LOADING});
+  try {
+    const londonWeather = await getLondonCity();
+
+    dispatch({type: ActionType.GET_CITY, payload: londonWeather});
+  } catch (error: any) {
+    console.log(error, 'error fetching weather ');
+  }
+};
+
+export const getKrasnodarWeather = () => async (dispatch: Dispatch<Action>) => {
+  dispatch({type: ActionType.CITY_LOADING});
+  try {
+    const krasnodarWeather = await getKrasnodarCity();
+
+    dispatch({type: ActionType.GET_CITY, payload: krasnodarWeather});
+  } catch (error: any) {
+    console.log(error, 'error fetching weather ');
+  }
+};
+
+export const addNewWeatherCity =
+  (city: GetCityWeatherResponse) => async (dispatch: Dispatch<Action>) => {
+    dispatch({type: ActionType.ADD_NEW_CITY, payload: city});
+  };
