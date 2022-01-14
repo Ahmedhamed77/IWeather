@@ -1,10 +1,9 @@
 # IWeather
 
-# React Native Template
 
 [![Moove It](https://circleci.com/gh/moove-it/react-native-template.svg?style=svg)](https://app.circleci.com/pipelines/github/moove-it/react-native-template?branch=master)
 
-This project aims to be a strong foundation for react-native applications. It provides a clear and organized structure, core dependencies, and boilerplate to jumpstart development.
+This project is using weatheOpenmap to provide info about weather for cities around the world.
 
 ## Prerequisites
 
@@ -87,4 +86,4 @@ While the data transfer between the API and the app is working you must use the 
 
 In this folder, you have the main objects to apply the composition architecture. Just create a folder for each screen you have in your application, call all the components and static resources you need to render the scene and finally use the corresponding hooks to interact with redux and create behaviors depending on the store.
 
-To keep the structure, extract the styles from the main file and place it in a {namefile.styles.js} do the same for the set of tests needed for each screen with the file {namefile.test.js}
+To keep the structure, extract the styles from the main file and place it in a {namefile.styles.tsx} 
